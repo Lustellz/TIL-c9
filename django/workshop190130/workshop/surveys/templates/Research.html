@@ -7,16 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Post Index</h1>
-    <a href="{%url 'posts:new'%}">New</a>
-    <ul>
-    {% for post in posts %}
-    
-        <li><a href="{%url 'posts:detail' post.pk %}">{{post.title}}</a></li>
-        
-    {% endfor %}
-    </ul>
-    
     
 </body>
 </html>

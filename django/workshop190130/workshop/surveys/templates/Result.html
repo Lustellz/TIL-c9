@@ -7,16 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Post Index</h1>
-    <a href="{%url 'posts:new'%}">New</a>
-    <ul>
-    {% for post in posts %}
-    
-        <li><a href="{%url 'posts:detail' post.pk %}">{{post.title}}</a></li>
-        
-    {% endfor %}
-    </ul>
-    
-    
+    <h1>{{question.title}}</h1>
+    <ul>{%for choice in question.choice_set.all%}
+    <li>{{choice.content}}:{{choice.votes}}</li>
+    {%endfor%}
+</ul>
 </body>
 </html>
