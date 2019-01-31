@@ -7,18 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-   
-    <h1>Post Index</h1>
-    
-    <a href="{%url 'posts:new'%}">New</a>
-    <ul>
-    {% for post in posts %}
-    
-        <li><a href="{%url 'posts:detail' post.pk %}">{{post.title}}</a></li>
-        
-    {% endfor %}
-    </ul>
-    
-    
+    <h1>성공적으로 Post를 생성했습니다.</h1>
 </body>
 </html>
