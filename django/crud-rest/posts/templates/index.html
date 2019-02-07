@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block container%}
+
+     <img src="{%static 'photo.jpg'%}"/><br>
+    <a href="{%url 'posts:new'%}">New</a>
+    <ul>
+    {% for post in posts %}
+    
+        <li><a href="{%url 'posts:detail' post.pk %}">{{post.title}}</a></li>
+        
+    {% endfor %}
+    </ul>
+    
+{%endblock%}
