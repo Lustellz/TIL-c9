@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New Article</h1>
+    
+    {{form.non_field_errors}} <!--전체를 포괄하는 에러 발생 시-->
+    <form method="post">
+        {% csrf_token %}
+        <!--<input type="text" name="title" required/>-->
+        <!--<input type="text" name="content" required/>-->
+        <!--form 분리-->
+        <!--1. title-->
+        <div>
+            {{form.title.errors}} <!--error messages (ul, li tag)-->
+            {{form.title.label_tag}} <!--label tag--> 
+            {{form.title}} <!--input tag-->
+        </div>
+        <!--2. content-->
+        <div>
+            {{form.content.errors}}
+            {{form.content.label_tag}}
+            {{form.content}}
+        </div>
+        <!--{{form}}-->
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>
