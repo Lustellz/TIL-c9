@@ -1,4 +1,4 @@
-"""insta URL Configuration
+"""crud0412 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,15 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
-from accounts import views as accounts_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('posts/', include('posts.urls')),
-    path('<str:username>/', accounts_views.people, name='people'),
-] 
-
-urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    path('musics/', include('musics.urls')),
+]
