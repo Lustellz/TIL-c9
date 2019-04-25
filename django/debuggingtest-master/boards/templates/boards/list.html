@@ -2,5 +2,7 @@
 {% block content %}
     <h1>INDEX</h1>
     <hr>
-    <div class="boards"></div>
+   {% for board in boards %}
+    <div class="boards">{{board.title}}</div>
+    {% endfor %}
 {% endblock %}
