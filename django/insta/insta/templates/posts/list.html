@@ -13,4 +13,28 @@
 </div>
 {% endfor %}
 
+<script>
+    const likeButtons = document.querySelectorAll('.like-button')
+    likeButtons.forEach(function(button){//각 버튼에 대한 addEventListener를 위한 반복
+        button.addEventListener('click', function(event){
+            console.log(event)
+            const postId = event.target.dataset.id //지정한 변수에는 data-id를 사용했었으므로
+            axios.get(`/posts/${postId}/like/`)//요청을 보낼 주소(urls.py)
+                    .then(function(response){
+                        // console.log(response)
+                        //response.data가 받은 obejct-> {liked: true, count: 1} 
+                        document.querySelector(`#like-count-${postId}`).innerText = response.data.count
+                        if(response.data.liked){
+                            //i 태그에 대한 정보는 event.target에 들어 있음
+                            event.target.classList.remove('far')//like-button에 지정한 클래스를 수정
+                            event.target.classList.add('fas')
+                        }else{
+                            event.target.classList.remove('fas')//like-button에 지정한 클래스를 수정
+                            event.target.classList.add('far')
+                        }
+                    })
+        })
+    })
+</script>
+
 {% endblock %}

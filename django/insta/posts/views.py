@@ -5,6 +5,7 @@ from .forms import PostForm, CommentForm, ImageFormSet
 from .models import Post, Comment
 from django.db import transaction
 from itertools import chain
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -105,8 +106,11 @@ def like(request,post_id):
     if request.user in post.like_users.all():
         # 좋아요를 취소함
         post.like_users.remove(request.user)
+        liked = False #좋아요를 취소 했는지 아닌지를 확인하기 위한 확인 변수
     else:
         # 좋아요를 클릭함
         post.like_users.add(request.user)
+        liked = True
     
-    return redirect('posts:list')
+    # return redirect('posts:list') 이제 페이지를 넘겨줄 일이 없으므로 주석처리를 한다.
+    return JsonResponse({'liked':liked, 'count':post.like_users.count()}) #import

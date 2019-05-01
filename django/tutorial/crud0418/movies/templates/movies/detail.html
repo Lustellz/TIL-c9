@@ -8,6 +8,27 @@
 </head>
 <body>
     <h1>Movie Detail</h1>
-    <p>{{movie.id}}</p>
+    <p>{{movie.id}}
+    {{movie.title}}</p>
+    <form action = "{% url 'movies:delete' movie.id %}" method = "POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete"/>
+    </form>
+    <hr>
+    {% for comment in movie.comment_set.all %}
+    
+    <li>{{ comment.content }}
+        <form action = "{% url 'movies:comment_delete' movie.id comment.id %}" method = "POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete"/>
+        </form>
+    </li>
+    
+    {% endfor %}
+    <form action = "{% url 'movies:comment_create' movie.id %}" method = "POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value = "Submit"/>
+    </form>
 </body>
 </html>

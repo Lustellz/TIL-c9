@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import get_user_model
@@ -21,7 +21,7 @@ def signup(request):
             auth_login(request, user)
             return redirect('posts:list')
     else:
-        signup_form = UserCreationForm()
+        signup_form = CustomUserChangeForm()
     return render(request, 'accounts/signup.html', {'signup_form':signup_form})
     
 def login(request):
